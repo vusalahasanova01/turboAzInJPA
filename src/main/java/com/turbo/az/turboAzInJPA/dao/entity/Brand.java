@@ -22,10 +22,6 @@ public class Brand {
     @Column(name = "brand_name")
     private String brandName;
 
-//    @OneToMany(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "car_id")
-//    private List<Car> carList;
-
     @OneToMany(mappedBy = "brand")
     private List<Model> models;
 }

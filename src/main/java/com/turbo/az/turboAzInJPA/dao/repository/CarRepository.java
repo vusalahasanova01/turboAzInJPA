@@ -5,13 +5,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface CarRepository extends JpaRepository<Car, JpaRepository> {
-
-    // List<Car> findCarByModelBrand(String brandName);
+public interface CarRepository extends JpaRepository<Car, Long> {
 
     List<Car> findCarByModelBrand_BrandName(String brandName);
 
-    List<Car> findCarByModel(String brandName);
+    List<Car> findCarByModel(String modelName);
 
-    void deleteById(Long id);
+    List<Car> findCarByColour(String colour);
+
+
 }

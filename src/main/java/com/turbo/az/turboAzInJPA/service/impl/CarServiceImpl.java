@@ -2,6 +2,7 @@ package com.turbo.az.turboAzInJPA.service.impl;
 
 import com.turbo.az.turboAzInJPA.dao.entity.Car;
 import com.turbo.az.turboAzInJPA.dao.repository.CarRepository;
+import com.turbo.az.turboAzInJPA.dto.request.CarRequest;
 import com.turbo.az.turboAzInJPA.service.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,6 @@ import java.util.List;
 public class CarServiceImpl implements CarService {
 
     private final CarRepository carRepository;
-    private final BrandServiceImpl brandService;
 
     @Override
     public List<Car> getAllCars() {
@@ -31,14 +31,31 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public List<Car> getCarsByBrandAndModel(String brandName) {
+        return carRepository.findCarByModelBrand_BrandName(brandName);
+    }
+
+    @Override
     public List<Car> getCarsByColour(String colour) {
-        return null;
+        return carRepository.findCarByColour(colour);
     }
 
     @Override
     public void deleteCarById(Long id) {
         carRepository.deleteById(id);
+    }
 
+    @Override
+    public Car updateCar(Long id, CarRequest carRequest) {
+        return carRepository.findById(id)
+                .map(car -> {
+                    car.setPlate(carRequest.getPlate());
+                    car.setColour(carRequest.getColour());
+                    car.setAdditionalInformation(carRequest.getAdditionalInform());
+                    car.setPrice(carRequest.getPrice());
+                    return carRepository.save(car);
+                })
+                .orElseThrow();
     }
 
 }

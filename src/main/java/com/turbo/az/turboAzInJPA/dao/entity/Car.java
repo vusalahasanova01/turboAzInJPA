@@ -26,7 +26,7 @@ public class Car {
     private double price;
 
     @Column(name = "model_year")
-    private Long year;
+    private String  year;
 
     @Column(name = "colour")
     private String colour;
