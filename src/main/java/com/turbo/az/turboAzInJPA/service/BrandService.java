@@ -8,4 +8,6 @@ public interface BrandService {
 
     List<Brand> getAllBrands();
 
+    void add(Brand brand);
+
 }

@@ -1,6 +1,7 @@
 package com.turbo.az.turboAzInJPA.service.impl;
 
 import com.turbo.az.turboAzInJPA.dao.entity.Car;
+import com.turbo.az.turboAzInJPA.dao.entity.Model;
 import com.turbo.az.turboAzInJPA.dao.repository.CarRepository;
 import com.turbo.az.turboAzInJPA.dto.request.CarRequest;
 import com.turbo.az.turboAzInJPA.service.CarService;
@@ -22,13 +23,14 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Car> getCarsByBrand(String modelName) {
-        return carRepository.findCarByModel(modelName);
+        return null;
+        // return carRepository.findCarByModel(modelName);
     }
 
-    @Override
-    public List<Car> getCarsByBrandAndModelAndColour(String brandName, String modelName, String colour) {
-        return null;
-    }
+//    @Override
+//    public List<Car> getCarsByBrandAndModelAndColour(String brandName, Model modelName, String colour) {
+//        return carRepository.findCarByModelAndColour(modelName, colour);
+//    }
 
     @Override
     public List<Car> getCarsByBrandAndModel(String brandName) {
