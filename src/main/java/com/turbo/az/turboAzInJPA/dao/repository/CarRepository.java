@@ -7,14 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CarRepository extends JpaRepository<Car, Long> {
-
-//    List<Car> findCarByModelBrand_BrandName(String brandName);
-
     List<Car> findCarByModel(Model model);
 
     List<Car> findCarByModelAndColour(Model model, String colour);
 
     List<Car> findCarByColour(String colour);
-
 
 }

@@ -1,14 +1,17 @@
 package com.turbo.az.turboAzInJPA.service.impl;
 
 import com.turbo.az.turboAzInJPA.dao.entity.Car;
-import com.turbo.az.turboAzInJPA.dao.entity.Model;
 import com.turbo.az.turboAzInJPA.dao.repository.CarRepository;
 import com.turbo.az.turboAzInJPA.dto.request.CarRequest;
+import com.turbo.az.turboAzInJPA.model.CarState;
 import com.turbo.az.turboAzInJPA.service.CarService;
+import com.turbo.az.turboAzInJPA.util.ExceptionUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +22,14 @@ public class CarServiceImpl implements CarService {
     @Override
     public List<Car> getAllCars() {
         return carRepository.findAll();
+    }
+
+    @Override
+    public List<Car> getAvailableCars() {
+        return carRepository.findAll()
+                .stream()
+                .filter(this::isCarState)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -55,9 +66,15 @@ public class CarServiceImpl implements CarService {
                     car.setColour(carRequest.getColour());
                     car.setAdditionalInformation(carRequest.getAdditionalInform());
                     car.setPrice(carRequest.getPrice());
+                    car.setCarState(carRequest.getCarState());
                     return carRepository.save(car);
                 })
-                .orElseThrow();
+                .orElseThrow(ExceptionUtil::exCarNotFound);
+    }
+
+    private boolean isCarState(Car car) {
+        if (Objects.isNull(car)) return false;
+        return CarState.AVAILABLE.equals(car.getCarState());
     }
 
 }

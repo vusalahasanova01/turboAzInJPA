@@ -13,14 +13,13 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "brand")
 public class Brand {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "brand_id")
     private Long id;
 
     @Column(name = "brand_name")
-    private String Name;
+    private String name;
 
     @OneToMany(mappedBy = "brand")
     private List<Model> models;

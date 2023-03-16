@@ -10,6 +10,8 @@ public interface CarService {
 
     List<Car> getAllCars();
 
+    List<Car> getAvailableCars();
+
     List<Car> getCarsByBrand(String brandName);
 
 //    List<Car> getCarsByBrandAndModelAndColour(String brandName, Model modelName, String colour);

@@ -20,7 +20,7 @@ public class Model {
     private Long id;
 
     @Column(name = "model_name")
-    private String modelName;
+    private String name;
 
     @OneToMany(mappedBy = "model")
     private List<Car> cars;
