@@ -32,11 +32,11 @@ public class CarServiceImpl implements CarService {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public List<Car> getCarsByBrand(String modelName) {
-        return null;
+//    @Override
+//    public List<Car> getCarsByBrand(String modelName) {
+//        return null;
         // return carRepository.findCarByModel(modelName);
-    }
+//    }
 
 //    @Override
 //    public List<Car> getCarsByBrandAndModelAndColour(String brandName, Model modelName, String colour) {
