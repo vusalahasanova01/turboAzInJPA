@@ -16,7 +16,7 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     List<Car> findCarByColour(String colour);
 
-    List<Car> findCarByPriceIsBetween(Long price1, Long price2);
+    List<Car> findCarByPriceIsBetween(double price, double price2);
 
 
 }

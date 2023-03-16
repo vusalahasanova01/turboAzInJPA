@@ -47,7 +47,7 @@ public class CarController {
     }
 
     @GetMapping("/get-cars-by-price/price1/{price1}/price2/{price2}")
-    public List<Car> getCarsByPrice(@PathVariable Long price1, @PathVariable Long price2) {
+    public List<Car> getCarsByPrice(@PathVariable double price1, @PathVariable double price2) {
         return carService.getCarsByPrice(price1, price2);
     }
 }

@@ -73,7 +73,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> getCarsByPrice(Long price1, Long price2) {
+    public List<Car> getCarsByPrice(double price1, double price2) {
         return carRepository.findCarByPriceIsBetween(price1, price2);
     }
 
