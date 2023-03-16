@@ -24,4 +24,5 @@ public interface CarService {
 
     Car updateCar(Long id, CarRequest carRequest);
 
+    List<Car> getCarsByPrice(Long price1, Long price2);
 }

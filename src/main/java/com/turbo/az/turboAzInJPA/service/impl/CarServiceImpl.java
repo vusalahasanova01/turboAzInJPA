@@ -72,6 +72,11 @@ public class CarServiceImpl implements CarService {
                 .orElseThrow(ExceptionUtil::exCarNotFound);
     }
 
+    @Override
+    public List<Car> getCarsByPrice(Long price1, Long price2) {
+        return carRepository.findCarByPriceIsBetween(price1, price2);
+    }
+
     private boolean isCarState(Car car) {
         if (Objects.isNull(car)) return false;
         return CarState.AVAILABLE.equals(car.getCarState());
