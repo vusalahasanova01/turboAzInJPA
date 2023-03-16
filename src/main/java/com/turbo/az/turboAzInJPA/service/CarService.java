@@ -14,7 +14,7 @@ public interface CarService {
 
 //    List<Car> getCarsByBrandAndModelAndColour(String brandName, Model modelName, String colour);
 
-    List<Car> getCarsByBrandAndModel(String brandName);
+//    List<Car> getCarsByBrandAndModel(String brandName);
 
     List<Car> getCarsByColour(String colour);
 

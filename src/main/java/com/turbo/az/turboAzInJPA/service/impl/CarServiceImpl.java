@@ -32,10 +32,10 @@ public class CarServiceImpl implements CarService {
 //        return carRepository.findCarByModelAndColour(modelName, colour);
 //    }
 
-    @Override
-    public List<Car> getCarsByBrandAndModel(String brandName) {
-        return carRepository.findCarByModelBrand_BrandName(brandName);
-    }
+//    @Override
+//    public List<Car> getCarsByBrandAndModel(String brandName) {
+//        return carRepository.findCarByModelBrand_BrandName(brandName);
+//    }
 
     @Override
     public List<Car> getCarsByColour(String colour) {

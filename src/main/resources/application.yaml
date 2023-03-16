@@ -2,13 +2,16 @@ server:
   port: 8080
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/turbo-az
-    username: postgres
-    password: Butterfly2001
+    url: jdbc:mysql://localhost:3306/turbo-az
+    username: root
+    password: Joker02
+    driver-class-name: com.mysql.jdbc.Driver
 
   jpa:
     generate-ddl: true
     show-sql: true
     hibernate:
       ddl-auto: update
+
+
 
