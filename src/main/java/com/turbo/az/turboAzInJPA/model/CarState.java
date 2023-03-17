@@ -5,6 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 public enum CarState {
+
     AVAILABLE(1),
     SOLD(2),
     UNSUPPORTED(-1);

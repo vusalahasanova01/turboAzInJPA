@@ -1,7 +1,6 @@
 package com.turbo.az.turboAzInJPA.service;
 
 import com.turbo.az.turboAzInJPA.dao.entity.Car;
-import com.turbo.az.turboAzInJPA.dao.entity.Model;
 import com.turbo.az.turboAzInJPA.dto.request.CarRequest;
 
 import java.util.List;
@@ -12,11 +11,13 @@ public interface CarService {
 
     List<Car> getAvailableCars();
 
-//    List<Car> getCarsByBrand(String brandName);
+    List<Car> getCarsByBrand(String brandName);
 
-//    List<Car> getCarsByBrandAndModelAndColour(String brandName, Model modelName, String colour);
+    List<Car> getCarsByModelName(String modelName);
 
-//    List<Car> getCarsByBrandAndModel(String brandName);
+    List<Car> getCarsByModelNameAndColour(String modelName, String colour);
+
+//    List<Car> getCarsByBrandAndModel();
 
     List<Car> getCarsByColour(String colour);
 

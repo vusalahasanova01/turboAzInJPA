@@ -1,6 +1,7 @@
 package com.turbo.az.turboAzInJPA.controller;
 
 import com.turbo.az.turboAzInJPA.dao.entity.Model;
+import com.turbo.az.turboAzInJPA.dto.response.GetAllModelResponse;
 import com.turbo.az.turboAzInJPA.service.ModelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +15,11 @@ import java.util.List;
 @RequestMapping("/model")
 @RequiredArgsConstructor
 public class ModelController {
+
     private final ModelService modelService;
 
     @GetMapping("/get-models-by-brand/brandName/{brandName}")
-    public List<Model> getModelsByBrand(@PathVariable String brandName) {
+    public List<GetAllModelResponse> getModelsByBrand(@PathVariable String brandName) {
         return modelService.getModelsByBrand(brandName);
     }
 

@@ -3,9 +3,9 @@ package com.turbo.az.turboAzInJPA.service.impl;
 import com.turbo.az.turboAzInJPA.dao.entity.Car;
 import com.turbo.az.turboAzInJPA.dao.repository.CarRepository;
 import com.turbo.az.turboAzInJPA.dto.request.CarRequest;
+import com.turbo.az.turboAzInJPA.mapper.CarMapper;
 import com.turbo.az.turboAzInJPA.model.CarState;
 import com.turbo.az.turboAzInJPA.service.CarService;
-import com.turbo.az.turboAzInJPA.util.ExceptionUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +18,8 @@ import java.util.stream.Collectors;
 public class CarServiceImpl implements CarService {
 
     private final CarRepository carRepository;
+    private final CarMapper carMapper;
+
 
     @Override
     public List<Car> getAllCars() {
@@ -32,21 +34,20 @@ public class CarServiceImpl implements CarService {
                 .collect(Collectors.toList());
     }
 
-//    @Override
-//    public List<Car> getCarsByBrand(String modelName) {
-//        return null;
-        // return carRepository.findCarByModel(modelName);
-//    }
+    @Override
+    public List<Car> getCarsByBrand(String brandName) {
+        return carRepository.findCarByModel_Brand_Name(brandName);
+    }
 
-//    @Override
-//    public List<Car> getCarsByBrandAndModelAndColour(String brandName, Model modelName, String colour) {
-//        return carRepository.findCarByModelAndColour(modelName, colour);
-//    }
+    @Override
+    public List<Car> getCarsByModelName(String modelName) {
+        return carRepository.findCarByModel_Name(modelName);
+    }
 
-//    @Override
-//    public List<Car> getCarsByBrandAndModel(String brandName) {
-//        return carRepository.findCarByModelBrand_BrandName(brandName);
-//    }
+    @Override
+    public List<Car> getCarsByModelNameAndColour(String modelName, String colour) {
+        return carRepository.findCarByModel_NameAndColour(modelName, colour);
+    }
 
     @Override
     public List<Car> getCarsByColour(String colour) {
@@ -60,16 +61,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Car updateCar(Long id, CarRequest carRequest) {
-        return carRepository.findById(id)
-                .map(car -> {
-                    car.setPlate(carRequest.getPlate());
-                    car.setColour(carRequest.getColour());
-                    car.setAdditionalInformation(carRequest.getAdditionalInform());
-                    car.setPrice(carRequest.getPrice());
-                    car.setCarState(carRequest.getCarState());
-                    return carRepository.save(car);
-                })
-                .orElseThrow(ExceptionUtil::exCarNotFound);
+        return carRepository.save(carMapper.toCar(carRequest));
     }
 
     @Override

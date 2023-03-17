@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 public class GlobalExceptionHandler {
+
     @ExceptionHandler(CarNotFoundException.class)
     public ResponseEntity<ErrorMessage> handleCarNotFoundException() {
         String errorText = "car not found";

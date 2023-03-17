@@ -17,6 +17,7 @@ import java.util.Objects;
 @Data
 @Table(name = "cars")
 public class Car {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "car_id", nullable = false)

@@ -19,6 +19,7 @@ import java.util.Objects;
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ErrorMessage {
+
     private final int status;
     private final String message;
     private String stackTrace;

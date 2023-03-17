@@ -13,6 +13,7 @@ import java.util.List;
 @RequestMapping("/brand")
 @RequiredArgsConstructor
 public class BrandController {
+
     private final BrandService brandService;
 
     @GetMapping("/get-all-brands")
