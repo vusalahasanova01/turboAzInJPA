@@ -16,6 +16,7 @@ public class MapperConfiguration {
 
     @Bean
     public BrandMapper brandMapper() {
+
         return BrandMapper.INSTANCE;
     }
 

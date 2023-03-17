@@ -9,6 +9,6 @@ public interface BrandService {
 
     List<Brand> getAllBrands();
 
-    void add(BrandRequest brandRequest);
+    void addBrand(BrandRequest brandRequest);
 
 }

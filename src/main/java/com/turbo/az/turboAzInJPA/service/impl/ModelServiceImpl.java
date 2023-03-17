@@ -18,11 +18,6 @@ public class ModelServiceImpl implements ModelService {
     private final ModelRepository modelRepository;
     private final ModelMapper modelMapper;
 
-//    @Override
-//    public List<Model> getModelsByBrand(String brandName) {
-//        return modelRepository.findModelByBrand_Name(brandName);
-//    }
-
     @Override
     public List<GetAllModelResponse> getModelsByBrand(String brandName) {
         List<Model> models = modelRepository.findModelByBrand_Name(brandName);

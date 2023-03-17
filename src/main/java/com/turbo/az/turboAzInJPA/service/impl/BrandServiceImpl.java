@@ -23,7 +23,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public void add(BrandRequest brandRequest) {
+    public void addBrand(BrandRequest brandRequest) {
         brandRepository.save(brandMapper.toBrand(brandRequest));
     }
 
