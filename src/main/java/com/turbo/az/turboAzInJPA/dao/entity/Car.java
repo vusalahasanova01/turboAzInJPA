@@ -1,12 +1,12 @@
 package com.turbo.az.turboAzInJPA.dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.turbo.az.turboAzInJPA.model.CarState;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
@@ -14,9 +14,10 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "cars")
-public class Car {
+public class Car implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -50,6 +51,7 @@ public class Car {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "model_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     Model model;
 
     public CarState getCarState() {
@@ -65,6 +67,34 @@ public class Car {
             this.carState = carState.getId();
         }
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Double.compare(car.price, price) == 0 && Objects.equals(id, car.id) && Objects.equals(plate, car.plate) && Objects.equals(year, car.year) && Objects.equals(colour, car.colour) && Objects.equals(carState, car.carState) && Objects.equals(additionalInformation, car.additionalInformation) && Objects.equals(informAddDate, car.informAddDate) && Objects.equals(informUpdateDate, car.informUpdateDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, plate, price, year, colour, carState, additionalInformation, informAddDate, informUpdateDate);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", plate='" + plate + '\'' +
+                ", price=" + price +
+                ", year='" + year + '\'' +
+                ", colour='" + colour + '\'' +
+                ", carState=" + carState +
+                ", additionalInformation='" + additionalInformation + '\'' +
+                ", informAddDate=" + informAddDate +
+                ", informUpdateDate=" + informUpdateDate +
+                '}';
     }
 
 }
